@@ -1,0 +1,5 @@
+.mention {
+    background: linear-gradient(60deg, #8af059, #f1ffea 100%);
+    max-width: 10vw;
+    border-radius: 5px;
+}
