@@ -1,10 +1,9 @@
 import { database, auth, firestore } from "../config";
-import { createUserWithEmailAndPassword, signInWithCredential, signInWithEmailAndPassword } from "firebase/auth";
-import { get, ref, child } from "firebase/database";
-import firebase from "firebase/compat/app";
-import { collection, getDocs, addDoc, setDoc, doc } from "firebase/firestore";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, linkWithCredential, signInWithEmailAndPassword, signInWithPopup, fetchSignInMethodsForEmail } from "firebase/auth";
+import { collection, getDocs, setDoc, doc } from "firebase/firestore";
+import { showNotification } from "./Notification";
 
-async function getUserData(email) {
+async function getUserData() {
   try {
     const querySnapshot = await getDocs(collection(firestore, "user-data"));
     const userData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
@@ -29,7 +28,7 @@ async function registerByEmailAndPassword(email, name, password, confirmPassword
       email: email,
       registerTime: new Date().toISOString(),
     }, {merge: true});
-    await setUserName(user.uid, name ? name : email.split('@')[0]);
+    await setUserName(name ? name : email.split('@')[0]);
     return true;
   }
   catch (error) {
@@ -61,6 +60,7 @@ async function loginByEmailAndPassword(email, password) {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
+    await showNotification("Login Success!", "Welcome , " + user.displayName + "!");
     console.log("User logged in: ", user);
     return true;
   }
@@ -87,9 +87,15 @@ function logout() {
 
 async function loginWithGoogle() {
   try {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    const result = await auth.signInWithPopup(provider);
+    const provider = new GoogleAuthProvider();
+    const result = await signInWithPopup(auth, provider);
     const user = result.user;
+    await setDoc(doc(firestore, "user-data", user.uid), {
+      email: user.email,
+      registerTime: new Date().toISOString(),
+    });
+    await setUserName(user.displayName ? user.displayName : user.email.split('@')[0]);
+    showNotification("Login Success!", "Welcome , " + user.displayName + "!");
     console.log("User logged in with Google: ", user);
     return true;
   }

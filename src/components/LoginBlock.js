@@ -30,16 +30,21 @@ function LoginBlock({ handleRegisterTextOnClick}) {
                 <IconTextButton
                     text="Login"
                     iconPath="path/to/login-icon.svg"
-                    onClick={() => {
-                        loginByEmailAndPassword(email, password);
+                    onClick={async () => {
+                        await loginByEmailAndPassword(email, password);
                         console.log("Login with email and password");
                     }}
                 />
+            </div>
+            <div className="register-text-block">
                 <ClickableText
                     text="Don't have an account? Register now!"
-                    onClick={handleRegisterTextOnClick}
+                    onClick={() => {
+                        handleRegisterTextOnClick();
+                        console.log("Jump to register page");
+                    }}
                 />
-            </div>
+                </div>
             <ThirdPartyLoginBlock />
         </div>
     );

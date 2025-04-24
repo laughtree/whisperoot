@@ -2,6 +2,8 @@ import InputBox from './InputBox';
 import React from 'react';
 import { registerByEmailAndPassword } from "../utils/AccountUtils"; // Import the functions from AccountUtils
 import IconTextButton from './IconTextButton';
+import ThirdPartyLoginBlock from './ThirdPartyLoginBlock';
+import IconButton from './IconButton';
 
 function RegisterBlock({handleLoginJumpBack}) {
     const [email, setEmail] = React.useState("");
@@ -46,6 +48,14 @@ function RegisterBlock({handleLoginJumpBack}) {
                 onClick={async () => {
                     const success = await registerByEmailAndPassword(email, name, password, confirmPassword);
                     
+                }}
+            />
+            <ThirdPartyLoginBlock/>
+            <IconButton
+                iconPath="path/to/back-icon.svg"
+                onClick={() => {
+                    handleLoginJumpBack();
+                    console.log("Jump back to login page");
                 }}
             />
         </div>
