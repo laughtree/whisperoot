@@ -40,24 +40,19 @@ function App() {
   });
 
   useEffect(()=>{
-    const checkLoggedIn = () => {
-        onAuthStateChanged(auth, (user) => {
-            console.log("User state changed: ", user);
-            setLoggedIn(user);
-            if (user && window.location.pathname === "/login") {
-                window.location.href = "/chat";
-            }
+    const checkLoggedIn = onAuthStateChanged(auth, (user) => {
+      console.log("User state changed: ", user);
+      setLoggedIn(user);
+      if (user && window.location.pathname === "/login") {
+        window.location.href = "/chat";
+      }
 
-            if (!user && window.location.pathname === "/chat") {
-              window.location.href = "/login";
-            }
-        })
-    }
-
-    return () => {
-        checkLoggedIn();
-    }
-})
+      if (!user && window.location.pathname.startsWith("/chat")) {
+        window.location.href = "/login";
+      }
+    })
+    return () => checkLoggedIn();
+  });
 
   return (
     <div className="App">
