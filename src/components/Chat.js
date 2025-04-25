@@ -1,5 +1,6 @@
 import MessageInput from "./MessageInput";
 import CreateGroupBlock from "./CreateGroupBlock";
+import Chatroom from "./Chatroom";
 
 function Chat ({roomCode}) {
     return (
@@ -9,24 +10,14 @@ function Chat ({roomCode}) {
                     roomCode === "create-group" ?
                     (<div className="chat-header">
                         <CreateGroupBlock />
-                    </div>) : (roomCode === "join-group" ?
-                            (<div className="chat-header">
-                                <h1>Join a group</h1>
-                                <p>Welcome to the chat room!</p>
-                            </div>) :
-                            (<div className="chat">
-                                <div className="chat-header">
-                                    <h1>Chat Room: {roomCode}</h1>
-                                    <p>Welcome to the chat room!</p>
-                                </div>
-                                <div className="chat-body">
-                                    <div className="message-area">
-                                        
-                                    </div>
-                                    <MessageInput />
-                                </div>
-                            </div>
-                            ))
+                    </div>) : 
+                    (roomCode === "join-group" ?
+                        (<div className="chat-header">
+                            <h1>Join a group</h1>
+                            <p>Welcome to the chat room!</p>
+                        </div>) :
+                        <Chatroom roomCode={roomCode} />
+                    )
                 )
                 :
                 <div className="chat-header">

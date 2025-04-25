@@ -1,4 +1,4 @@
-import { collection, getDocs, setDoc, doc, arrayUnion, arrayRemove } from "firebase/firestore";
+import { collection, getDocs, setDoc, doc, arrayUnion, arrayRemove, getDoc } from "firebase/firestore";
 import { firestore } from "../config";
 import { auth } from "../config";
 
@@ -32,7 +32,7 @@ async function getGroupById(groupId) {
 
 async function getUserGroups(userId) {
     try {
-        const userDoc = await getDocs(doc(firestore, "user-data", userId));
+        const userDoc = await getDoc(doc(firestore, "user-data", userId));
         if (userDoc.exists()) {
             const userData = userDoc.data();
             const groups = userData.groups || [];
@@ -58,9 +58,11 @@ async function createGroup(name, description) {
             description: description,
             members: [],
             createdAt: new Date(),
-            messages: [],
         }, { merge: false });
         await addMemberToGroup(groupId, owner);
+        await setDoc(doc(firestore, "group-data", groupId), {
+            messages: [],
+        }, { merge: true });
         console.log("Group created with ID: ", groupId);
         console.log("owner: ", owner);
         return groupId;

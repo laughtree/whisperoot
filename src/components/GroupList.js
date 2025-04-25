@@ -1,41 +1,48 @@
-import { onSnapshot, collection } from "firebase/firestore";
+import { onSnapshot, collection, doc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { auth, firestore } from "../config";
 import ClickableText from "./ClickableText";
-import { getUserGroups } from "../utils/GroupUtil";
 import IconTextButton from "./IconTextButton";
-import { get } from "firebase/database";
 
 function GroupList({}) {
     const [groups, setGroups] = useState([]);
 
     useEffect(() => {
-        const renewGroups = onSnapshot(collection(firestore, "group-list"), (snapshot) => {
-            setGroups(getUserGroups(auth.currentUser.uid));
+        const renewGroups = onSnapshot(doc(firestore, "user-data", auth.currentUser.uid), (snapshot) => {
+            setGroups(snapshot.data().groups || []);
         });
         return () => renewGroups();
-    });
+    }, [auth.currentUser]);
 
     return (
         <div className="group-list-block">
             {groups.length > 0 ? (
                 <div className="group-list">
-                    {groups.map((group) => (
-                        <ClickableText
-                            key={group.id}
-                            text={group.name}
+                    <div className="group-list-body">
+                        {groups.map((group) => (
+                            <div className="group-list-item">
+                                <ClickableText
+                                    key={group.id}
+                                    text={group.name}
+                                    onClick={() => {
+                                        window.location.href = `/chat/${group.id}`;
+                                    }}
+                                />
+                            </div>
+                            
+                        ))}
+                    </div>
+                    
+                    <div className="group-list-footer">
+                        <IconTextButton
+                            text={"Create a new group"}
+                            iconPath={""}
                             onClick={() => {
-                                window.location.href = `/chat/${group.id}`;
+                                window.location.href = "/chat/create-group";
                             }}
                         />
-                    ))}
-                    <IconTextButton
-                        text={"Create a new group"}
-                        iconPath={""}
-                        onClick={() => {
-                            window.location.href = "/create-group";
-                        }}
-                    />
+                    </div>
+                    
                 </div>
             ) : (
                 <div className="no-group">

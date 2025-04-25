@@ -12,10 +12,6 @@ function SideBar({}) {
     const [friends, setFriends] = useState([]);
     const [groups, setGroups] = useState([]);
 
-    useEffect(() => {
-        const fetchNotifications = function a(){};
-        return ()=>fetchNotifications();
-    });
 
 
     return (
@@ -26,7 +22,7 @@ function SideBar({}) {
                 <div className="notifice-list">
                     <IconTextButton
                     text={"Notifications"}
-                    iconPath={""}
+                    iconPath={null}
                     onClick={()=>{setShowNotifications(!showNotifications)}}
                     />                    
                     {
@@ -40,7 +36,7 @@ function SideBar({}) {
                 <div className="friends-list">
                     <IconTextButton
                     text={"Friends"}
-                    iconPath={""}
+                    iconPath={null}
                     onClick={()=>{setShowFriends(!showFriends)}}
                     />
                     {
@@ -54,7 +50,7 @@ function SideBar({}) {
                 <div className="groups-list">
                     <IconTextButton
                     text={"Groups"}
-                    iconPath={""}
+                    iconPath={null}
                     onClick={()=>{setShowGroups(!showGroups)}}
                     />                    
                     {
@@ -66,7 +62,7 @@ function SideBar({}) {
             </li>
             <li><IconTextButton
                 text={"Settings"}
-                iconPath={""}
+                iconPath={null}
                 onClick={()=>{window.location.href = "/settings"}}
                 />
             </li>
