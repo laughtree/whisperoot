@@ -2,6 +2,9 @@ import IconTextButton from "./IconTextButton";
 import { useEffect, useState } from "react";
 import UserList from "./UserList";
 import GroupList from "./GroupList";
+import { auth, firestore } from "../config";
+import { doc, onSnapshot, getDoc } from "firebase/firestore";
+import { set } from "firebase/database";
 
 function SideBar({}) {
     const [showNotifications, setShowNotifications] = useState(false);
@@ -11,6 +14,7 @@ function SideBar({}) {
     const [notifications, setNotifications] = useState([]);
     const [friends, setFriends] = useState([]);
     const [groups, setGroups] = useState([]);
+
 
 
 
@@ -51,11 +55,14 @@ function SideBar({}) {
                     <IconTextButton
                     text={"Groups"}
                     iconPath={null}
-                    onClick={()=>{setShowGroups(!showGroups)}}
+                    onClick={()=>{
+                        setGroups([]);
+                        setShowGroups(!showGroups)
+                    }}
                     />                    
                     {
                         showGroups ? (
-                            <GroupList />
+                            <GroupList groups={groups}/>
                         ) : null
                     }
                 </div>

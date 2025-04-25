@@ -1,18 +1,35 @@
-import { onSnapshot, collection, doc } from "firebase/firestore";
+import { onSnapshot, collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { auth, firestore } from "../config";
 import ClickableText from "./ClickableText";
 import IconTextButton from "./IconTextButton";
+import { set } from "firebase/database";
 
-function GroupList({}) {
-    const [groups, setGroups] = useState([]);
+function GroupList({groups}) {
+    // const [groups, setGroups] = useState([]);
 
-    useEffect(() => {
-        const renewGroups = onSnapshot(doc(firestore, "user-data", auth.currentUser.uid), (snapshot) => {
-            setGroups(snapshot.data().groups || []);
-        });
-        return () => renewGroups();
-    }, [auth.currentUser]);
+    // useEffect(() => {
+    //     const renewGroups = onSnapshot(doc(firestore, "user-data", auth.currentUser.uid), (snapshot) => {
+    //         // console.log("Current data: ", snapshot.data().groups);
+    //         const groupIds = snapshot.data().groups;
+    //         const newGroups = [];
+    //         if (!groupIds) {
+    //             setGroups([]);
+    //             return;
+    //         }
+    //         groupIds.map((groupId) => {
+    //             return getDoc(doc(firestore, "group-list", groupId)).then((doc) => {
+    //                 if (doc.exists()) {
+    //                     newGroups.push({ id: doc.id, ...doc.data() });
+    //                 }
+    //             });
+    //         });
+    //         setGroups(newGroups);
+    //         console.log("Current data: ", newGroups);
+    //     });
+    //     return () => renewGroups();
+    // });
+
 
     return (
         <div className="group-list-block">
