@@ -2,16 +2,18 @@ import { useEffect, useState } from "react";
 import MessageInput from "./MessageInput";
 import { collection, onSnapshot, doc } from "firebase/firestore";
 import { firestore } from "../config";
+import { getMessageHint } from "../utils/messageUtils";
 
 function Chatroom({roomCode}) {
     const [roomData, setRoomData] = useState(null);
     const [roomInfo, setRoomInfo] = useState(null);
+    const [messageHint, setMessageHint] = useState("Type a message...");
 
     useEffect(()=>{
         const renewRoomData = onSnapshot(doc(firestore, "group-data", roomCode), (snapshot) => {
             const data = snapshot.data();
             console.log("Room data: ", data);
-            setRoomData(data[0]);
+            setRoomData({...data, id: roomCode});
         });
 
         return () => renewRoomData();
@@ -21,11 +23,15 @@ function Chatroom({roomCode}) {
         const renewRoomInfo = onSnapshot(doc(firestore, "group-list", roomCode), (snapshot) => {
             const data = snapshot.data();
             console.log("Room info: ", data);
-            setRoomInfo(data[0]);
+            setRoomInfo({...data, id: roomCode});
         });
 
         return () => renewRoomInfo();
     }, [roomCode]);
+
+    useEffect(() => {
+        setMessageHint(getMessageHint());
+    })
 
     return (
         <div className="chatroom">

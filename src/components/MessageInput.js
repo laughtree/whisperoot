@@ -3,13 +3,13 @@ import IconButton from "./IconButton";
 import InputBox from "./InputBox";
 import { getMessageHint, sendMessage } from "../utils/messageUtils";
 
-function MessageInput() {
+function MessageInput(messageHint) {
 
     return (
         <div className="message-input">
         <InputBox
             onSend={() => console.log("Send message")}
-            hint={getMessageHint()}
+            hint={messageHint}
             className="message-input"
         />
         <IconButton 
