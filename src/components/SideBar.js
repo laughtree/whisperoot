@@ -5,6 +5,7 @@ import GroupList from "./GroupList";
 import { auth, firestore } from "../config";
 import { doc, onSnapshot, getDoc } from "firebase/firestore";
 import { set } from "firebase/database";
+import { getUserGroups } from "../utils/GroupUtil";
 
 function SideBar({}) {
     const [showNotifications, setShowNotifications] = useState(false);
@@ -55,8 +56,14 @@ function SideBar({}) {
                     <IconTextButton
                     text={"Groups"}
                     iconPath={null}
-                    onClick={()=>{
-                        setGroups([]);
+                    onClick={async ()=>{
+                        const userGroups = await getUserGroups(auth.currentUser.uid);
+                        const groupInfos = await Promise.all(userGroups.map(async (groupId) => {
+                                const groupDoc = await getDoc(doc(firestore, "group-list", groupId));
+                                return { id: groupId, ...groupDoc.data() };
+                            }
+                        ));
+                        setGroups(groupInfos);
                         setShowGroups(!showGroups)
                     }}
                     />                    
