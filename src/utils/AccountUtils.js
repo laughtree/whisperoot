@@ -79,6 +79,7 @@ function logout() {
     }).catch((error) => {
       console.error("Error logging out: ", error);
     });
+    window.location.href = "/login";
   }
   catch (error) {
     console.error("Error logging out: ", error);

@@ -1,9 +1,11 @@
 import LoginBlock from "./LoginBlock";
 import RegisterBlock from "./RegisterBlock";
-import React from "react";
+import { useEffect, useState } from "react";
 
 function LoginPage({}) {
-    const [block, setBlock] = React.useState("login"); // or "register"
+    const [block, setBlock] = useState("login"); // or "register"
+
+    
     return (
         <div className="login-page">
             {block === "login" ? (

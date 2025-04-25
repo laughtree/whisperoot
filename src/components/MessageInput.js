@@ -1,7 +1,7 @@
 //框 & 發送 & 輸入
 import IconButton from "./IconButton";
 import InputBox from "./InputBox";
-import { getMessageHint } from "../utils/messageUtils";
+import { getMessageHint, sendMessage } from "../utils/messageUtils";
 
 function MessageInput() {
 
@@ -10,10 +10,15 @@ function MessageInput() {
         <InputBox
             onSend={() => console.log("Send message")}
             hint={getMessageHint()}
+            className="message-input"
         />
         <IconButton 
             iconPath="path/to/send-icon.svg"
-            onClick={() => console.log("Send message")}
+            onClick={() => {
+                const message = document.querySelector(".message-input input").value;
+                sendMessage(message);
+                console.log("Send message: ", message);
+            }}
         />
         </div>
     );
