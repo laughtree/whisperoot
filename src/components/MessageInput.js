@@ -8,6 +8,12 @@ function MessageInput({ messageHint, roomCode }) {
 
     return (
         <div className="message-input">
+        <IconButton
+            iconPath="path/to/attach-icon.svg"
+            onClick={() => {
+                console.log("Attach file clicked");
+            }}
+        />
         <InputBox
             hint={messageHint}
             className="message-input"

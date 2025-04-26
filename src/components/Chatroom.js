@@ -41,7 +41,6 @@ function Chatroom({roomCode}) {
         <div className="chatroom">
             <div className="chatroom-header">
                 <h1>{roomInfo ? roomInfo.name : "Loading..."}</h1>
-                <p>Welcome to the chat room!</p>
             </div>
             <div className="chatroom-body">
                 <div className="message-area">
@@ -55,6 +54,8 @@ function Chatroom({roomCode}) {
                         )
                     }
                 </div>
+            </div>
+            <div className="chatroom-footer">
                 <MessageInput roomCode={roomCode} messageHint={messageHint}/>
             </div>
         </div>

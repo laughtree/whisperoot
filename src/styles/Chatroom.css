@@ -1,16 +1,24 @@
 .chatroom {
+    padding: 0.5em;
+    display: flex;
     flex-direction: column;
-    flex-shrink: 1;
+    flex: 1 1 auto;
 }
 
 .chatroom-body {
-    flex-shrink: 1;
     max-height: 80vh;
+    display: flex;
 }
 
 .message-area {
+    display: flex;
+    flex-direction: column;
     box-sizing: border-box;
-    overflow-y: auto;
-    flex-shrink: 1;
+    overflow-y: scroll;
     min-height: 0;
+    flex: 1 1 auto;
+}
+
+.chatroom-footer {
+    display: flex;;
 }
