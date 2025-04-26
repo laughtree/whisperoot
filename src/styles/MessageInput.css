@@ -9,4 +9,5 @@
 
 .message-input .input-box {
     flex-grow: 1;
+    flex-shrink: 1;
 }

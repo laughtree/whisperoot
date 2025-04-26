@@ -1,10 +1,16 @@
 .chatroom {
     flex-direction: column;
+    flex-shrink: 1;
+}
+
+.chatroom-body {
+    flex-shrink: 1;
+    max-height: 80vh;
 }
 
 .message-area {
     box-sizing: border-box;
     overflow-y: auto;
-    max-height: 80vh;
+    flex-shrink: 1;
     min-height: 0;
 }
