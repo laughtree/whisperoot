@@ -1,12 +1,48 @@
-.mention {
-    background: linear-gradient(60deg, #8af059, #f1ffea 100%);
-    max-width: 10vw;
-    border-radius: 5px;
+.message-box {
+    padding: 0.2em;
+}
+.username {
+    font-weight: bold;
+    color: #000;
+    font-size: 0.8em;
+    margin: 0.5em;
+    max-width: 90%;
 }
 
-p {
-    margin: 0;
-    padding: 0;
-    font-size: 1.2rem;
-    color: #333;
+.msg {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: #000;
+    font-size: 1em;
+    margin: 0.5em;
+    max-width: 90%;
+}
+
+.message {
+    border-radius: 10px;
+    padding: 0.5em 1em;
+}
+
+.self .message {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+.other .message {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.self {
+    text-align: right;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.other {
+    text-align: left;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
 }

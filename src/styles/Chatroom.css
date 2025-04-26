@@ -1,0 +1,10 @@
+.chatroom {
+    flex-direction: column;
+}
+
+.message-area {
+    box-sizing: border-box;
+    overflow-y: auto;
+    max-height: 80vh;
+    min-height: 0;
+}

@@ -7,9 +7,14 @@ function ThirdPartyLoginBlock({}) {
             <h2>Or login with</h2>
             <IconButton
             iconPath="path/to/google-icon.svg"
-            onClick={() => {
-                loginWithGoogle();
-                console.log("Login with Google");
+            onClick={async () => {
+                const success = await loginWithGoogle();
+                if (success) {
+                    console.log("Google login successful, redirecting to chat page");
+                    window.location.href = "/chat";
+                } else {
+                    alert("Google login failed, please try again");
+                }
             }}
             />
         </div>

@@ -4,6 +4,7 @@ import { collection, onSnapshot, doc } from "firebase/firestore";
 import { firestore } from "../config";
 import { getMessageHint } from "../utils/messageUtils";
 import MessageBox from "./MessageBox";
+import "../styles/Chatroom.css";
 
 function Chatroom({roomCode}) {
     const [roomData, setRoomData] = useState(null);

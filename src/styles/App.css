@@ -1,9 +1,13 @@
 .App {
-    text-align: center;
     font-family: Arial, sans-serif;
 }
 
 div {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }

@@ -1,0 +1,12 @@
+.message-input{
+    flex-direction: row;
+    height: min-content;
+}
+
+.message-input .icon-button-container{
+    max-width: 64px;
+}
+
+.message-input .input-box {
+    flex-grow: 1;
+}

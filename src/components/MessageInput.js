@@ -2,6 +2,7 @@
 import IconButton from "./IconButton";
 import InputBox from "./InputBox";
 import { sendMessage } from "../utils/messageUtils";
+import "../styles/MessageInput.css";
 
 function MessageInput({ messageHint, roomCode }) {
 

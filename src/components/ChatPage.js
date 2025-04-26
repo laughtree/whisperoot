@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Chat from "./Chat";
 import SideBar from "./SideBar";
 import { useParams } from "react-router-dom";
+import "../styles/ChatPage.css";
 
 function ChatPage() {
     const { roomCode } = useParams();

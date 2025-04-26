@@ -103,8 +103,6 @@ async function loginWithGoogle() {
     await setDoc(doc(firestore, "user-data", user.uid), {
       email: user.email,
       lastLoginTime: new Date().toISOString(),
-      groups: [],
-      friends: [],
     }, {merge: true});
     await setUserName(user.displayName ? user.displayName : user.email.split('@')[0]);
     showNotification("Login Success!", "Welcome , " + user.displayName + "!");
