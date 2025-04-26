@@ -1,5 +1,5 @@
 import { doc, setDoc, arrayUnion } from "firebase/firestore";
-import { firestore } from "../config";
+import { auth, firestore } from "../config";
 
 const hints = [
     "Hi, how are you? ...",
@@ -13,15 +13,22 @@ const hints = [
 
 function getMessageHint() {
     let randomIndex = Math.floor(Math.random() * hints.length);
+    console.log("Random hint index: ", randomIndex);
+    console.log("Random hint: ", hints[randomIndex]);
     return hints[randomIndex];
 }
 
-async function sendMessage(roomCode, message) {
+async function sendMessage(roomCode, message, mentionList = [], reactions = [], medias = []) {
     try {
-        await setDoc(doc(firestore, "chat-data", roomCode), {
+        await setDoc(doc(firestore, "group-data", roomCode), {
             messages: arrayUnion({
+                author: auth.currentUser.uid,
+                sender: auth.currentUser.displayName,
                 text: message,
                 timestamp: new Date(),
+                mentionList: mentionList,
+                reactions: reactions,
+                medias: medias,
             })
         }, { merge: true });
         return true;

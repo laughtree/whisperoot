@@ -1,9 +1,5 @@
-import { onSnapshot, collection, doc, getDoc, getDocs } from "firebase/firestore";
-import { useEffect, useState } from "react";
-import { auth, firestore } from "../config";
 import ClickableText from "./ClickableText";
 import IconTextButton from "./IconTextButton";
-import { set } from "firebase/database";
 
 function GroupList({groups}) {
     return (
@@ -31,6 +27,13 @@ function GroupList({groups}) {
                             iconPath={""}
                             onClick={() => {
                                 window.location.href = "/chat/create-group";
+                            }}
+                        />
+                        <IconTextButton
+                            text={"Join a group"}
+                            iconPath={""}
+                            onClick={() => {
+                                window.location.href = "/chat/join-group";
                             }}
                         />
                     </div>

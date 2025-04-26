@@ -1,11 +1,11 @@
 import IconTextButton from "./IconTextButton";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import UserList from "./UserList";
 import GroupList from "./GroupList";
 import { auth, firestore } from "../config";
-import { doc, onSnapshot, getDoc } from "firebase/firestore";
-import { set } from "firebase/database";
+import { doc, getDoc } from "firebase/firestore";
 import { getUserGroups } from "../utils/GroupUtil";
+import "../styles/SideBar.css";
 
 function SideBar({}) {
     const [showNotifications, setShowNotifications] = useState(false);
@@ -15,9 +15,6 @@ function SideBar({}) {
     const [notifications, setNotifications] = useState([]);
     const [friends, setFriends] = useState([]);
     const [groups, setGroups] = useState([]);
-
-
-
 
     return (
         <div className="sidebar">

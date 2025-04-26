@@ -1,14 +1,13 @@
 //框 & 發送 & 輸入
 import IconButton from "./IconButton";
 import InputBox from "./InputBox";
-import { getMessageHint, sendMessage } from "../utils/messageUtils";
+import { sendMessage } from "../utils/messageUtils";
 
-function MessageInput(messageHint) {
+function MessageInput({ messageHint, roomCode }) {
 
     return (
         <div className="message-input">
         <InputBox
-            onSend={() => console.log("Send message")}
             hint={messageHint}
             className="message-input"
         />
@@ -16,8 +15,9 @@ function MessageInput(messageHint) {
             iconPath="path/to/send-icon.svg"
             onClick={() => {
                 const message = document.querySelector(".message-input input").value;
-                sendMessage(message);
-                console.log("Send message: ", message);
+                sendMessage(roomCode, message);
+                console.log("Send message: ", message, "to room: ", roomCode);
+                document.querySelector(".message-input input").value = "";
             }}
         />
         </div>

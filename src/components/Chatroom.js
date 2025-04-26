@@ -17,7 +17,7 @@ function Chatroom({roomCode}) {
         });
 
         return () => renewRoomData();
-    })
+    }, [roomCode]);
 
     useEffect(()=>{
         const renewRoomInfo = onSnapshot(doc(firestore, "group-list", roomCode), (snapshot) => {
@@ -30,8 +30,10 @@ function Chatroom({roomCode}) {
     }, [roomCode]);
 
     useEffect(() => {
-        setMessageHint(getMessageHint());
-    })
+        const hint = getMessageHint()
+        console.log("Gen message hint: ", hint);
+        setMessageHint(hint);
+    }, [roomCode]);
 
     return (
         <div className="chatroom">
@@ -41,9 +43,19 @@ function Chatroom({roomCode}) {
             </div>
             <div className="chatroom-body">
                 <div className="message-area">
-                    {}
+                    {
+                        roomData ? (
+                            roomData.messages.map((message) => (
+                                <div className="message" key={message.id}>
+                                    <p>{message.sender}: {message.text}</p>
+                                </div>
+                            ))
+                        ) : (
+                            <p>Loading...</p>
+                        )
+                    }
                 </div>
-                <MessageInput />
+                <MessageInput roomCode={roomCode} messageHint={messageHint}/>
             </div>
         </div>
     );

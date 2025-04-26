@@ -25,7 +25,7 @@ async function getGroupById(groupId) {
             return null;
         }
     } catch (error) {
-        console.log("Error getting group: ", error);
+        console.error("Error getting group: ", error);
         return null;
     }
 }
@@ -39,11 +39,11 @@ async function getUserGroups(userId) {
             console.log("User groups: ", groups);
             return groups;
         } else {
-            console.log("User not found: ", userId);
+            console.error("User not found: ", userId);
             return null;
         }
     } catch (error) {
-        console.log("Error getting user groups: ", error);
+        console.error("Error getting user groups: ", error);
         return null;
     }
 }
@@ -65,15 +65,24 @@ async function createGroup(name, description) {
         }, { merge: true });
         console.log("Group created with ID: ", groupId);
         console.log("owner: ", owner);
+        window.location.href = `/chat/${groupId}`;
         return groupId;
     } catch (error) {
-        console.log("Error creating group: ", error);
+        console.error("Error creating group: ", error);
         return null;
     }
 }
 
 async function addMemberToGroup(groupId, user) {
     try {
+        if(!user) {
+            user = auth.currentUser.uid;
+        }
+        const groupDoc = await getDoc(doc(firestore, "group-list", groupId));
+        if (!groupDoc.exists()) {
+            console.error("Group does not exist: ", groupId);
+            return;
+        }
         await setDoc(doc(firestore, "group-list", groupId), {
             members: arrayUnion(user),
         }, { merge: true });
@@ -82,7 +91,7 @@ async function addMemberToGroup(groupId, user) {
         }, { merge: true });
         console.log("Member added to group: ", user);
     } catch (error) {
-        console.log("Error adding member to group: ", error);
+        console.error("Error adding member to group: ", error);
     }
 }
 
@@ -96,7 +105,7 @@ async function removeMemberFromGroup(groupId, user) {
         }, { merge: true });
         console.log("Member removed from group: ", user);
     } catch (error) {
-        console.log("Error removing member from group: ", error);
+        console.error("Error removing member from group: ", error);
     }
 }
 
@@ -108,7 +117,7 @@ async function deleteGroup(groupId) {
         }, { merge: true });
         console.log("Group deleted: ", groupId);
     } catch (error) {
-        console.log("Error deleting group: ", error);
+        console.error("Error deleting group: ", error);
     }
 }
 
@@ -118,7 +127,7 @@ async function getGroups() {
         return chatData.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     }
     catch (error) {
-        console.log("Error getting groups: ", error);
+        console.error("Error getting groups: ", error);
         return null;
     }
 }

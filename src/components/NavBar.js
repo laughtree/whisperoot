@@ -1,5 +1,6 @@
 import IconTextButton from "./IconTextButton";
-import { logout } from "../utils/AccountUtils"; // Assuming you have a logout function in auth.js
+import { logout } from "../utils/AccountUtils";
+import "../styles/NavBar.css";
 
 function NavBar({loggedIn}) {
   return (
