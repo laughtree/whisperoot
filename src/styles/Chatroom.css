@@ -6,8 +6,8 @@
 }
 
 .chatroom-body {
-    max-height: 80vh;
     display: flex;
+    max-height: 80vh;
 }
 
 .message-area {
@@ -17,6 +17,7 @@
     overflow-y: scroll;
     min-height: 0;
     flex: 1 1 auto;
+    padding-bottom: 60px;
 }
 
 .chatroom-footer {

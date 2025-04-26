@@ -18,7 +18,6 @@ function SideBar({}) {
 
     return (
         <div className="sidebar">
-            <h2>Sidebar</h2>
             <ul>
             {/* <li>
                 <div className="notifice-list">

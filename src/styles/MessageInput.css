@@ -1,11 +1,17 @@
-.message-input{
+.message-input {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     display: flex;
     flex-direction: row;
-    height: min-content;
-    flex: 1 1 auto;
+    height: 60px; /* Adjust height as needed */
+    background-color: #fff; /* Add a background color to distinguish it */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+    z-index: 1000; /* Ensure it stays above other elements */
 }
 
-.message-input .icon-button-container{
+.message-input .icon-button-container {
     max-width: 64px;
     max-height: 64px;
     min-width: 32px;

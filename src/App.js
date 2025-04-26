@@ -54,7 +54,9 @@ function App() {
   return (
     <div className="App">
       <NavBar loggedIn={loggedIn} />
-      <RouterProvider router={router} />
+      <div className="content">
+        <RouterProvider router={router} />
+      </div>
     </div>
   );
 }
