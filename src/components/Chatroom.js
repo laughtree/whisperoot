@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import MessageInput from "./MessageInput";
-import { collection, onSnapshot, doc } from "firebase/firestore";
+import { onSnapshot, doc } from "firebase/firestore";
 import { firestore } from "../config";
 import { getMessageHint } from "../utils/messageUtils";
 import MessageBox from "./MessageBox";
@@ -10,12 +10,14 @@ function Chatroom({roomCode}) {
     const [roomData, setRoomData] = useState(null);
     const [roomInfo, setRoomInfo] = useState(null);
     const [messageHint, setMessageHint] = useState("Type a message...");
+    const messageAreaRef = useRef(null);
 
     useEffect(()=>{
         const renewRoomData = onSnapshot(doc(firestore, "group-data", roomCode), (snapshot) => {
             const data = snapshot.data();
             console.log("Room data: ", data);
             setRoomData({...data, id: roomCode});
+
         });
 
         return () => renewRoomData();
@@ -37,13 +39,19 @@ function Chatroom({roomCode}) {
         setMessageHint(hint);
     }, [roomCode]);
 
+    useEffect(() => {
+        if (messageAreaRef.current) {
+            messageAreaRef.current.scrollTop = messageAreaRef.current.scrollHeight;
+        }
+    }, [roomData]);
+
     return (
         <div className="chatroom">
             <div className="chatroom-header">
                 <h1>{roomInfo ? roomInfo.name : "Loading..."}</h1>
             </div>
             <div className="chatroom-body">
-                <div className="message-area">
+                <div className="message-area" ref={messageAreaRef}>
                     {
                         roomData ? (
                             roomData.messages.map((message) => (
