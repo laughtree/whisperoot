@@ -31,8 +31,13 @@ function LoginBlock({ handleRegisterTextOnClick}) {
                     text="Login"
                     iconPath="path/to/login-icon.svg"
                     onClick={async () => {
-                        await loginByEmailAndPassword(email, password);
-                        console.log("Login with email and password");
+                        const success = await loginByEmailAndPassword(email, password);
+                        if (success) {
+                            console.log("Login successful, redirecting to chat page");
+                            window.location.href = "/chat";
+                        } else {
+                            alert("Login failed, please try again");
+                        }
                     }}
                 />
             </div>

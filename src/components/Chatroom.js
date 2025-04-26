@@ -3,6 +3,7 @@ import MessageInput from "./MessageInput";
 import { collection, onSnapshot, doc } from "firebase/firestore";
 import { firestore } from "../config";
 import { getMessageHint } from "../utils/messageUtils";
+import MessageBox from "./MessageBox";
 
 function Chatroom({roomCode}) {
     const [roomData, setRoomData] = useState(null);
@@ -46,9 +47,7 @@ function Chatroom({roomCode}) {
                     {
                         roomData ? (
                             roomData.messages.map((message) => (
-                                <div className="message" key={message.id}>
-                                    <p>{message.sender}: {message.text}</p>
-                                </div>
+                                <MessageBox message={message}/>
                             ))
                         ) : (
                             <p>Loading...</p>

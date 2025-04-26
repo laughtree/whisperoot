@@ -20,7 +20,7 @@ function SideBar({}) {
         <div className="sidebar">
             <h2>Sidebar</h2>
             <ul>
-            <li>
+            {/* <li>
                 <div className="notifice-list">
                     <IconTextButton
                     text={"Notifications"}
@@ -33,8 +33,8 @@ function SideBar({}) {
                         ) : null
                     }
                 </div>
-            </li>
-            <li>
+            </li> */}
+            {/* <li>
                 <div className="friends-list">
                     <IconTextButton
                     text={"Friends"}
@@ -47,7 +47,7 @@ function SideBar({}) {
                         ) : null
                     }
                 </div>
-            </li>
+            </li> */}
             <li>
                 <div className="groups-list">
                     <IconTextButton
@@ -71,12 +71,12 @@ function SideBar({}) {
                     }
                 </div>
             </li>
-            <li><IconTextButton
+            {/* <li><IconTextButton
                 text={"Settings"}
                 iconPath={null}
                 onClick={()=>{window.location.href = "/settings"}}
                 />
-            </li>
+            </li> */}
             </ul>
         </div>
     );

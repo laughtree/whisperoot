@@ -33,8 +33,10 @@ async function getGroupById(groupId) {
 async function getUserGroups(userId) {
     try {
         const userDoc = await getDoc(doc(firestore, "user-data", userId));
+        console.log("User data: ", userDoc);
         if (userDoc.exists()) {
             const userData = userDoc.data();
+            console.log("User data: ", userData);
             const groups = userData.groups || [];
             console.log("User groups: ", groups);
             return groups;

@@ -1,4 +1,4 @@
-import './App.css';
+import './styles/App.css';
 import { useEffect, useState } from 'react';
 import { checkNotificationPermission } from './utils/Notification';
 import LoginPage from './components/LoginPage';
@@ -43,9 +43,6 @@ function App() {
     const checkLoggedIn = onAuthStateChanged(auth, (user) => {
       console.log("User state changed: ", user);
       setLoggedIn(user);
-      if (user && window.location.pathname === "/login") {
-        window.location.href = "/chat";
-      }
 
       if (!user && window.location.pathname.startsWith("/chat")) {
         window.location.href = "/login";

@@ -3,3 +3,10 @@
     max-width: 10vw;
     border-radius: 5px;
 }
+
+p {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+    color: #333;
+}

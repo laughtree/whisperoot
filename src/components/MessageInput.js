@@ -15,6 +15,10 @@ function MessageInput({ messageHint, roomCode }) {
             iconPath="path/to/send-icon.svg"
             onClick={() => {
                 const message = document.querySelector(".message-input input").value;
+                const msgContent = message.trim();
+                if (msgContent === "") {
+                    return;
+                }
                 sendMessage(roomCode, message);
                 console.log("Send message: ", message, "to room: ", roomCode);
                 document.querySelector(".message-input input").value = "";

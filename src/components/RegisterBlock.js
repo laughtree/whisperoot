@@ -47,11 +47,17 @@ function RegisterBlock({handleLoginJumpBack}) {
                 iconPath="path/to/register-icon.svg"
                 onClick={async () => {
                     const success = await registerByEmailAndPassword(email, name, password, confirmPassword);
-                    
+                    if (success) {
+                        console.log("Registration successful, redirecting to login page");
+                        window.location.href = "/chat";
+                    } else {
+                        alert("Registration failed, please try again");
+                    }
                 }}
             />
             <ThirdPartyLoginBlock/>
-            <IconButton
+            <IconTextButton
+                text={"Cancel"}
                 iconPath="path/to/back-icon.svg"
                 onClick={() => {
                     handleLoginJumpBack();

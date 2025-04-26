@@ -1,6 +1,6 @@
 import { auth, firestore } from "../config";
 import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { collection, getDocs, setDoc, doc } from "firebase/firestore";
+import { collection, getDocs, setDoc, doc, getDoc } from "firebase/firestore";
 import { showNotification } from "./Notification";
 
 async function getUserData() {
@@ -27,7 +27,10 @@ async function registerByEmailAndPassword(email, name, password, confirmPassword
     await setDoc(doc(firestore, "user-data", user.uid), {
       email: email,
       registerTime: new Date().toISOString(),
+      groups: [],
+      friends: [],
     }, {merge: true});
+    console.log("set name = ", name ? name : email.split('@')[0]);
     await setUserName(name ? name : email.split('@')[0]);
     return true;
   }
@@ -63,7 +66,7 @@ async function loginByEmailAndPassword(email, password) {
     await setDoc(doc(firestore, "user-data", user.uid), {
       lastLoginTime: new Date().toISOString(),
     }, {merge: true});
-    await showNotification("Login Success!", "Welcome , " + user.displayName + "!");
+    await showNotification("Login Success!", "Welcome , " + email  + "!");
     console.log("User logged in: ", user);
     return true;
   }
@@ -100,6 +103,8 @@ async function loginWithGoogle() {
     await setDoc(doc(firestore, "user-data", user.uid), {
       email: user.email,
       lastLoginTime: new Date().toISOString(),
+      groups: [],
+      friends: [],
     }, {merge: true});
     await setUserName(user.displayName ? user.displayName : user.email.split('@')[0]);
     showNotification("Login Success!", "Welcome , " + user.displayName + "!");
