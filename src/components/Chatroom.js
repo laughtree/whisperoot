@@ -1,14 +1,17 @@
 import { useEffect, useState, useRef } from "react";
 import MessageInput from "./MessageInput";
 import { onSnapshot, doc } from "firebase/firestore";
-import { firestore } from "../config";
+import { auth, firestore } from "../config";
 import { getMessageHint } from "../utils/messageUtils";
 import MessageBox from "./MessageBox";
 import "../styles/Chatroom.css";
 
 function Chatroom({roomCode}) {
     const [roomData, setRoomData] = useState(null);
+    const [prevRoomData, setPrevRoomData] = useState(null);
     const [roomInfo, setRoomInfo] = useState(null);
+    const [prevRoomInfo, setPrevRoomInfo] = useState(null);
+
     const [messageHint, setMessageHint] = useState("Type a message...");
     const messageAreaRef = useRef(null);
 
@@ -40,13 +43,16 @@ function Chatroom({roomCode}) {
     }, [roomCode]);
 
     useEffect(() => {
-        if (messageAreaRef.current) {
+        const newMsg = roomData ? roomData.messages.slice(-1)[0] : null;
+        console.log("distance to bottom: ", messageAreaRef.current.scrollHeight - messageAreaRef.current.scrollTop - messageAreaRef.current.clientHeight);
+        if (messageAreaRef.current && ((roomInfo !== prevRoomInfo || (newMsg && newMsg.author === auth.currentUser.uid)|| messageAreaRef.current.scrollHeight - messageAreaRef.current.scrollTop - messageAreaRef.current.clientHeight) <= 500)) {
+            setPrevRoomInfo(roomInfo);
             messageAreaRef.current.scrollTo({
                 top: messageAreaRef.current.scrollHeight,
                 behavior: "smooth"
             });
         }
-    }, [roomData]);
+    }, [roomData, roomInfo, prevRoomInfo]);
 
     return (
         <div className="chatroom">
