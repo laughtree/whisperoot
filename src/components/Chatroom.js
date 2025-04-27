@@ -5,6 +5,8 @@ import { auth, firestore } from "../config";
 import { getMessageHint } from "../utils/messageUtils";
 import MessageBox from "./MessageBox";
 import "../styles/Chatroom.css";
+import {showNotification} from "../utils/Notification";
+import { set } from "firebase/database";
 
 function Chatroom({roomCode}) {
     const [roomData, setRoomData] = useState(null);
@@ -14,6 +16,8 @@ function Chatroom({roomCode}) {
 
     const [messageHint, setMessageHint] = useState("Type a message...");
     const messageAreaRef = useRef(null);
+
+    const [pageVisible, setPageVisible] = useState(true);
 
     useEffect(()=>{
         const renewRoomData = onSnapshot(doc(firestore, "group-data", roomCode), (snapshot) => {
@@ -52,7 +56,45 @@ function Chatroom({roomCode}) {
                 behavior: "smooth"
             });
         }
-    }, [roomData, roomInfo, prevRoomInfo]);
+
+        if (newMsg && newMsg.author !== auth.currentUser.uid && !pageVisible) {
+            console.log("New message: ", newMsg);
+            showNotification(newMsg.sender, newMsg.text, 3000);
+        }
+    }, [roomData, roomInfo, prevRoomInfo, pageVisible]);
+
+    useEffect(()=>{
+        document.addEventListener("visibilitychange", ()=>{
+            if (document.visibilityState === "visible") {
+                const hint = getMessageHint()
+                console.log("Gen message hint: ", hint);
+                setMessageHint(hint);
+                setPageVisible(true);
+            }
+            else {
+                setPageVisible(false);
+            }
+        })
+    }, [])
+
+    useEffect(()=>{
+        const whenBlur = ()=>{
+            setPageVisible(false);
+        }
+
+        const whenFocus = ()=>{
+            setPageVisible(true);
+        }
+
+        window.addEventListener("focus", whenFocus);
+
+        window.addEventListener("blur", whenBlur);
+
+        return () => {
+            window.removeEventListener("focus", whenFocus);
+            window.removeEventListener("blur", whenBlur);
+        }
+    }, []);
 
     return (
         <div className="chatroom">
