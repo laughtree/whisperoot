@@ -41,7 +41,10 @@ function Chatroom({roomCode}) {
 
     useEffect(() => {
         if (messageAreaRef.current) {
-            messageAreaRef.current.scrollTop = messageAreaRef.current.scrollHeight;
+            messageAreaRef.current.scrollTo({
+                top: messageAreaRef.current.scrollHeight,
+                behavior: "smooth"
+            });
         }
     }, [roomData]);
 
