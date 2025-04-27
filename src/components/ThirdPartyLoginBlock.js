@@ -1,12 +1,14 @@
 import IconButton from "./IconButton";
 import { loginWithGoogle } from "../utils/AccountUtils" 
+import googleLoginIcon from "../images/web_light_sq_na.svg";
+import "../styles/ThirdPartyLoginBlock.css";
 
 function ThirdPartyLoginBlock({}) {
     return (
         <div className="third-party-login-block">
             <h2>Or login with</h2>
             <IconButton
-            iconPath="path/to/google-icon.svg"
+            iconPath={googleLoginIcon}
             onClick={async () => {
                 const success = await loginWithGoogle();
                 if (success) {

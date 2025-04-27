@@ -1,0 +1,23 @@
+.third-party-login-block {
+    margin: 0;
+    padding: 0;
+}
+
+.third-party-login-block .icon-button-container {
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.third-party-login-block .icon-button-container button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    cursor: pointer;
+    padding: 0;
+    border-radius: 8%;
+}
