@@ -13,7 +13,18 @@ function MessageInput({ messageHint, roomCode }) {
     return (
         <div className="input-area-container">
             {/* <GIFSearchBox show={showGIFSearch}/> */}
-            <div className="message-input">
+            <div className="message-input" onKeyDown={(e)=>{
+                if (e.key === "Enter") {
+                    const message = document.querySelector(".message-input input").value;
+                    const msgContent = message.trim();
+                    if (msgContent === "") {
+                        return;
+                    }
+                    sendMessage(roomCode, message);
+                    console.log("Send message: ", message, "to room: ", roomCode);
+                    document.querySelector(".message-input input").value = "";
+                }
+            }}>
             
             {/* <IconButton
                 iconPath="path/to/attach-icon.svg"
