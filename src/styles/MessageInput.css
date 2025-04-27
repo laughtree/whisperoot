@@ -31,3 +31,9 @@
     border: none;
     outline: none;
 }
+
+.gif-search-box {
+    position: fixed;
+    bottom: 60px; /* Adjust based on the height of the message input */
+    left: 0;
+}
