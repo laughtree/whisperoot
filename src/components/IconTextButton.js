@@ -1,4 +1,4 @@
-
+import "../styles/IconTextButton.css";
 function IconTextButton({ iconPath, text, onClick }) {
   return (
     <div className="icon-text-button-container">

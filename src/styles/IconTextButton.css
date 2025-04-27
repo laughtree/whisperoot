@@ -1,0 +1,31 @@
+@keyframes float {
+    0% {
+        transform: translateY(0);
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    }
+    100% {
+        transform: translateY(-2px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.icon-text-button-container {
+    display: flex;
+    align-items: center;
+    padding: 2px 2px;
+}
+.icon-text-button-container button {
+    display: flex;
+    align-items: center;
+    background-color: #a9c5e4;
+    border: none;
+    margin: 0;
+    color: #434343;
+    cursor: pointer;
+    padding: 0px 2px;
+}
+
+.icon-text-button-container button:hover {
+    background-color: #dae8f8;
+    animation: float 0.3s ease forwards;
+}

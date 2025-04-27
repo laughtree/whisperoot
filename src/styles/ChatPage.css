@@ -1,8 +1,10 @@
 .chat-page {
     display: flex;
     flex-direction: row;
+    flex: 1 1 auto;
 }
 .chat {
     flex: 1 1 auto;
-    max-height: 80vh;
+    /* max-height: 80vh; */
+    padding: 0;
 }

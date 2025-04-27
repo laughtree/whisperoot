@@ -1,0 +1,13 @@
+@keyframes lis {
+    0% {transform: scale(0);}
+    50% {transform: scale(1.1);}
+    100% {transform: scale(1);}
+}
+
+.group-list {
+    padding: 4px 4px;
+}
+
+.group-list div {
+    animation: lis 0.1s ease-in-out;
+}

@@ -1,9 +1,31 @@
 ul {
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: 2px 2px;
 }
 
 .sidebar {
     max-width: 20vw;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 4px 4px;
+}
+
+.sidebar .icon-text-button-container {
+    padding: 0.5em;
+    display: flex;
+    align-items: center;
+    background-color: #a9c5e4;
+    border-radius: 8%;
+}
+
+.sidebar .icon-text-button-container button {
+    display: flex;
+    align-items: center;
+    background-color: #a9c5e4;
+    border: none;
+    margin: 0;
+    color: #434343;
+    cursor: pointer;
+    padding: 0.5em;
+    border-radius: 8%;
 }

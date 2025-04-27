@@ -1,5 +1,6 @@
 import ClickableText from "./ClickableText";
 import IconTextButton from "./IconTextButton";
+import "../styles/GroupList.css";
 
 function GroupList({groups}) {
     return (

@@ -13,8 +13,15 @@ ul {
     align-items: flex-end;
     justify-content: flex-end;
     flex-direction: row;
+    background-color: #73a8e4;
+    
 }
 
 .navbar {
+    padding: 5px 5px;
     display: flex;
+}
+
+.navbar .icon-text-button-container button {
+    border-radius: 8%;
 }
