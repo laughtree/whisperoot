@@ -20,10 +20,9 @@ function JoinGroupBox({}) {
             <IconTextButton
                 text="Join Group"
                 iconPath="path/to/join-icon.svg"
-                onClick={() => {
+                onClick={async () => {
                     if (roomCode) {
-                        addMemberToGroup(roomCode, auth.currentUser.uid);
-                        showNotification("You have joined the group!", "Welcome!");
+                        const success = await addMemberToGroup(roomCode, auth.currentUser.uid);
                     } else {
                         alert("Please enter a valid group ID.");
                     }

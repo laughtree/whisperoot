@@ -6,6 +6,7 @@ import "../styles/MessageInput.css";
 import { searchGifs } from "../utils/GIFUtils";
 import GIFSearchBox from "./GIFSearchBox";
 import { useState } from "react";
+import sendIcon from "../images/send_32.svg"
 
 function MessageInput({ messageHint, roomCode }) {
     const [showGIFSearch, setShowGIFSearch] = useState(false);
@@ -38,7 +39,7 @@ function MessageInput({ messageHint, roomCode }) {
                 className="message-input"
             />
             <IconButton 
-                iconPath="path/to/send-icon.svg"
+                iconPath={sendIcon}
                 onClick={() => {
                     const message = document.querySelector(".message-input input").value;
                     const msgContent = message.trim();

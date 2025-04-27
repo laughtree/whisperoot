@@ -1,6 +1,7 @@
 import { collection, getDocs, setDoc, doc, arrayUnion, arrayRemove, getDoc } from "firebase/firestore";
 import { firestore } from "../config";
 import { auth } from "../config";
+import { showNotification } from "./Notification";
 
 async function createGroupId() {
     const ID = crypto.randomUUID().slice(0, 8);
@@ -92,6 +93,8 @@ async function addMemberToGroup(groupId, user) {
             groups: arrayUnion(groupId),
         }, { merge: true });
         console.log("Member added to group: ", user);
+        window.location.href = "/chat/" + groupId;
+        showNotification("You have joined the group!", "Welcome!");
     } catch (error) {
         console.error("Error adding member to group: ", error);
     }
