@@ -2,6 +2,7 @@ import LoginBlock from "./LoginBlock";
 import RegisterBlock from "./RegisterBlock";
 import { useEffect, useState } from "react";
 import "../styles/LoginPageBlocks.css";
+import "../styles/LoginPage.css";
 
 function LoginPage({}) {
     const [block, setBlock] = useState("login"); // or "register"

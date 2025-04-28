@@ -11,3 +11,10 @@
 .group-list div {
     animation: lis 0.1s ease-in-out;
 }
+
+.group-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}

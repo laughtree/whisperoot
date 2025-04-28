@@ -14,9 +14,6 @@
     display: flex;
     flex: 1 1 auto;
     padding: 0.2em;
-}
-
-.message {
     animation: pop 0.5s ease forwards;
 }
 
@@ -40,7 +37,7 @@
 .message {
     border-radius: 10px;
     padding: 0.5em 1em;
-    max-width: 40%;
+    max-width: 45vw;
 }
 
 .self .message {
@@ -49,8 +46,8 @@
 }
 
 .other .message {
-    background-color: #f8d7da;
-    color: #721c24;
+    background-color: #d7dff8;
+    color: #586386;
 }
 
 .self {

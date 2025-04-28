@@ -4,6 +4,7 @@ import ClickableText from './ClickableText';
 import React from 'react';
 import { loginByEmailAndPassword } from "../utils/AccountUtils"; // Import the functions from AccountUtils
 import ThirdPartyLoginBlock from './ThirdPartyLoginBlock';
+import LoginIcon from '../images/login_32.svg';
 
 function LoginBlock({ handleRegisterTextOnClick}) {
     const [email, setEmail] = React.useState("");
@@ -29,7 +30,7 @@ function LoginBlock({ handleRegisterTextOnClick}) {
             <div className="button-block">
                 <IconTextButton
                     text="Login"
-                    iconPath="path/to/login-icon.svg"
+                    iconPath={LoginIcon}
                     onClick={async () => {
                         const success = await loginByEmailAndPassword(email, password);
                         if (success) {

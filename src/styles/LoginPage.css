@@ -1,0 +1,25 @@
+.login-page .icon-text-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.login-page div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+}
+
+.login-page {
+    padding: 5px 10px;
+}
+
+.login-page .input-box input {
+    height: 40px;
+    width: 100%;
+}

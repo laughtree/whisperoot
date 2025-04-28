@@ -23,6 +23,7 @@
     color: #434343;
     cursor: pointer;
     padding: 0px 2px;
+    font-size: medium;
 }
 
 .icon-text-button-container button:hover {
