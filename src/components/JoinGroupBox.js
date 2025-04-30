@@ -3,7 +3,7 @@ import IconTextButton from "./IconTextButton";
 import InputBox from "./InputBox";
 import { useState } from "react";
 import { auth } from "../config";
-import { showNotification } from "../utils/Notification";
+import JoinIcon from "../images/join_32.svg";
 
 function JoinGroupBox({}) {
     const [roomCode, setRoomCode] = useState("");
@@ -19,7 +19,7 @@ function JoinGroupBox({}) {
             />
             <IconTextButton
                 text="Join Group"
-                iconPath="path/to/join-icon.svg"
+                iconPath={JoinIcon}
                 onClick={async () => {
                     if (roomCode) {
                         const success = await addMemberToGroup(roomCode, auth.currentUser.uid);

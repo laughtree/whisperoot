@@ -1,0 +1,11 @@
+.home-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-page img {
+    max-width: 80vw;
+    max-height: 80vh;
+}

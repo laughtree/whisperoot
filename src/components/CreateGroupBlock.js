@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { createGroup } from '../utils/GroupUtil';
 import InputBox from './InputBox';
 import IconTextButton from './IconTextButton';
+import AddIcon from '../images/add_32.svg';
 
 function CreateGroupBlock({}) {
     const [groupName, setGroupName] = useState('');
@@ -24,8 +25,12 @@ function CreateGroupBlock({}) {
             />
             <IconTextButton
                 text={"Create"}
-                iconPath={""}
+                iconPath={AddIcon}
                 onClick={() => {
+                    if (groupName === '' || groupDescription === '') {
+                        alert("Please give a group name and description.");
+                        return;
+                    }
                     createGroup(groupName, groupDescription, groupId);
                     setGroupName('');
                     setGroupDescription('');

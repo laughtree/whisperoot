@@ -17,6 +17,7 @@ ul {
     padding: 10px;
     border-radius: 5px;
     text-decoration: none;
+    width: 100%;
 }
 
 .sidebar .icon-text-button-container {
@@ -27,4 +28,5 @@ ul {
     padding: 10px;
     border-radius: 5px;
     text-decoration: none;
+    flex: 1 1 auto;
 }

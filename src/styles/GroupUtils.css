@@ -1,0 +1,75 @@
+.join-group-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-group-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.join-group-box .input-box input {
+    height: 40px;
+    width: 100%;
+    max-width: 40vw;
+}
+
+.join-group-box .input-box {
+    padding: 5px;
+}
+
+.create-group-box .input-box {
+    padding: 5px;
+}
+
+.create-group-box .input-box input {
+    height: 40px;
+    width: 100%;
+    max-width: 40vw;
+}
+
+.join-group-box .icon-text-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    width: 100%;
+}
+
+.create-group-box .icon-text-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    width: 100%;
+}
+
+.join-group-box .icon-text-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    flex: 1 1 auto;
+}
+
+.create-group-box .icon-text-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    flex: 1 1 auto;
+}

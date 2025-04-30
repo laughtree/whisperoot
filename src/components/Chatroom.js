@@ -6,7 +6,7 @@ import { getMessageHint } from "../utils/messageUtils";
 import MessageBox from "./MessageBox";
 import "../styles/Chatroom.css";
 import {showNotification} from "../utils/Notification";
-import { set } from "firebase/database";
+import "../styles/GroupUtils.css";
 
 function Chatroom({roomCode}) {
     const [roomData, setRoomData] = useState(null);
