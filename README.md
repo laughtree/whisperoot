@@ -1,7 +1,7 @@
 # Whisperoot (Chatroom web app for Software Studio Course midterm project)
 
-[The Firebase page](https://whisperoot-579d7.web.app/)
-[The Firebase project(Alreagy set cgvlab711839@gmail.com as editor)]()
+* [The Firebase page](https://whisperoot-579d7.web.app/)
+* [The Firebase project(Alreagy set cgvlab711839@gmail.com as editor)]()
 
 ## Functions required in spec
 
