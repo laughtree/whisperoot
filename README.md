@@ -66,7 +66,7 @@
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/whisperoot.git
+    git clone https://github.com/laughtree/whisperoot.git
     ```
 2. Navigate to the project directory:
     ```bash
