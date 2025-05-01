@@ -15,7 +15,7 @@
         * After anter the register mode of login page, just enter your email, username, password and comfirm your password as the hint on input boxes, then press the "register" button under them. 
 
 2. Host Firebase Page
-    The link to the firebase page of this project is https://whisperoot-579d7.web.app/
+    * The link to the firebase page of this project is https://whisperoot-579d7.web.app/
 
 3. Database read and write
     * I used Firestore database instead of realtime database since its structure adapts the function of a chatroom more.
