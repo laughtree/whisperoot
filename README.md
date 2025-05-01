@@ -30,6 +30,7 @@
 5. Git
     * You can check the commit history at [this github repo](), it is a private repo because I pushed the API key directly to make sure TA can setup my website locally successfully, I alreagy invite cgvlab711839@gmail.com, please join it to check.
     * Or here is a screenshop of my commit history in vscode(since I'm still modifying README.md, it is not really up to date, if you wants the actually latest version, please check it at the github repo above)
+    ![commit history](image-1.png)
     ![Commit history](image.png)
 
 6. Chatroom
@@ -61,6 +62,11 @@
 4. Deal with HTML Insertion
     * By put the message content in a <p></p> area, it will be treated as a text instead of an innerHTML item.
     It didn't have any problem during my test.
+
+* Bonus
+1. Tenor API GIF sending
+    * There is a GIF button beside the message input, click it can expand the GIF search area, input keyword more than 3 letter, then it will search and show first 8 result related GIF.
+    * Simply click on a GIF in search area to send it to chatroom  
 
 ## How to  setup locally
 
