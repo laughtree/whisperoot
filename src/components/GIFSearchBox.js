@@ -2,8 +2,9 @@ import InputBox from "./InputBox";
 import IconButton from "./IconButton";
 import { searchGifs } from "../utils/GIFUtils";
 import { useState, useEffect } from "react";
+import GIFDisplayArea from "./GIFDisplayArea";
 
-function GIFSearchBox({show}) {
+function GIFSearchBox({show, roomCode}) {
     const [gifs, setGifs] = useState([]);
     const [searchText, setSearchText] = useState("");
 
@@ -15,9 +16,13 @@ function GIFSearchBox({show}) {
                 onChange={async (e) => {
                     setSearchText(e.target.value);
                     if (e.target.value.length > 2) {
-                        const searchedGIFs = await searchGifs(e.target.value);
-                        console.log("GIFs found: ", searchedGIFs);
-                        setGifs(searchedGIFs);
+                        searchGifs(e.target.value).then((searchedGIFs) => {
+                            console.log("GIFs found: ", searchedGIFs);
+                            setGifs(searchedGIFs);
+                        }).catch((error) => {
+                            console.error("Error searching GIFs: ", error);
+                            setGifs([]);
+                        });
                     } else {
                         setGifs([]);
                     }
@@ -25,18 +30,7 @@ function GIFSearchBox({show}) {
                 value={searchText}
             />
             <div className="display-area">
-                {gifs.map((gif) => (
-                    <IconButton
-                        key={gif.id}
-                        iconPath={gif.url}
-                        onClick={() => {
-                            console.log("Selected GIF: ", gif.url);
-                            setSearchText("");
-                            setGifs([]);
-                        }}
-                        className="gif-icon-button"
-                    />
-                ))}
+                <GIFDisplayArea gifs={gifs} roomCode={roomCode} />
             </div>
             
         </div>

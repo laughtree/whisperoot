@@ -25,7 +25,7 @@ async function sendMessage(roomCode, message, mentionList = [], reactions = [], 
             console.error("User does not exist: ", auth.currentUser.uid);
             return false;
         }
-        if (!message) {
+        if (!message && !medias.length) {
             console.error("Message is empty");
             return false;
         }
