@@ -7,6 +7,8 @@ import MessageBox from "./MessageBox";
 import "../styles/Chatroom.css";
 import {showNotification} from "../utils/Notification";
 import "../styles/GroupUtils.css";
+import IconButton from "./IconButton";
+import CopyIcon from "../images/copy_16.svg";
 
 function Chatroom({roomCode}) {
     const [roomData, setRoomData] = useState(null);
@@ -100,6 +102,12 @@ function Chatroom({roomCode}) {
         <div className="chatroom">
             <div className="chatroom-header">
                 <h1>{roomInfo ? roomInfo.name : "Loading..."}</h1>
+                <div className="room-code">
+                    <p>Room code: {roomCode}</p>
+                    <IconButton iconPath={CopyIcon} onClick={()=>{navigator.clipboard.writeText(roomCode).then(()=>{showNotification("Room code copied!", roomCode, 1000)}).catch((e)=>console.error(e.message))}} />
+                </div>
+                {/* <p>{roomInfo ? roomInfo.description : "Loading ..."}</p> */}
+                
             </div>
             <div className="chatroom-body">
                 <div className="message-area" ref={messageAreaRef}>
