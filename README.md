@@ -8,7 +8,7 @@ A real-time chatroom web app with private group chats, built with React and Fire
 !! Google 帳號登入因 API key 失效不可用
    請使用站內 email 註冊功能
 
-!! Tenor GIF 因 API 過期當前不可用
+!! Tenor GIF 因 API 失效不可用
 ```
 
 <img width="2476" height="1464" alt="Whisperoot screenshot" src="https://github.com/user-attachments/assets/26e7c02c-2740-4d99-a899-7817551c50c9" />
