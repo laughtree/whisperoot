@@ -1,6 +1,6 @@
 # Whisperoot (Chatroom web app for Software Studio Course midterm project)
 
-* [The Firebase page](https://whisperoot-579d7.web.app/)
+* [The Firebase page](https://whisperoot-579d7.web.app/)(Demo)
 * [The Firebase project](https://console.firebase.google.com/u/0/project/whisperoot-579d7/overview?fb_gclid=Cj0KCQjwlMfABhCWARIsADGXdy9hbRxQl5S3Q-tNlSyqVz81z8mcLK1D9qcACWZGPBbap_YOZb4CZqsaAhi5EALw_wcB)(Alreagy set cgvlab711839@gmail.com as editor)
 
 ## Functions required in spec
