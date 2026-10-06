@@ -5,7 +5,7 @@ A real-time chatroom web app with private group chats, built with React and Fire
 * [Demo](https://whisperoot-579d7.web.app/)
 
 ```
-!! Google 登入當前不可用，推測原因為 firebase 相關請求格式修改
+!! Google 帳號登入因 API key 失效不可用
    請使用站內 email 註冊功能
 
 !! Tenor GIF 因 API 過期當前不可用
